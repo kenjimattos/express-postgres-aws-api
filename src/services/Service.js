@@ -3,6 +3,7 @@ const models = require("../models");
 class Service {
   constructor(modelName) {
     this.model = models[modelName];
+    this.name = modelName;
   }
 
   async getAll() {

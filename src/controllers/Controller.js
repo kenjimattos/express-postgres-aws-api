@@ -39,9 +39,9 @@ class Controller {
     try {
       const isUpdated = await this.service.updateById(Number(id), newData);
       if (isUpdated) {
-        return res.status(200).json({ message: "Entry updated successfully." });
+        return res.status(200).json({ message: `${this.service.name } ${id} updated successfully.` });
       }
-      return res.status(404).json({ message: `Update failed. id ${id} not found.` });
+      return res.status(404).json({ message: `Update failed. ${this.service.name } ${id} not found.` });
     } catch(error) {
       //erro
     }
@@ -51,7 +51,7 @@ class Controller {
     const { id } = req.params;
     try {
       await this.service.deleteById(Number(id));
-      return res.status(200).json({ message: `id ${id} successfully deleted.` });
+      return res.status(200).json({ message: `${this.service.name } ${id} successfully deleted.` });
     } catch(error) {
       //erro
     }
