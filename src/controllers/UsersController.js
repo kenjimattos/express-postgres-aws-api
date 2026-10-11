@@ -1,14 +1,13 @@
-const database = require("../models");
+const Controller = require('./Controller.js');
+const UsersService = require('../services/UsersService.js');
 
-class UsersController {
-  static async getAll(req, res) {
-    try{
-      const usersList = await database.User.findAll();
-      return res.status(200).json(usersList);
-    } catch (error) {
-      //erro
-    }
+const usersService = new UsersService();
+
+class UsersController extends Controller {
+  constructor() {
+    super(usersService);
   }
+
 }
 
 module.exports = UsersController
