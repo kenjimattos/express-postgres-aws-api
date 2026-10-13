@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 const {
   Model
-} = require('sequelize');
+} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     cpf: DataTypes.STRING,
     active: DataTypes.BOOLEAN,
-    role: DataTypes.ENUM('instructor', 'student')
+    role: DataTypes.ENUM("instructor", "student")
   }, {
     sequelize,
-    modelName: 'User',
-    tableName: 'users'
+    modelName: "User",
+    tableName: "users"
   });
   return User;
 };

@@ -1,5 +1,5 @@
-const Controller = require('./Controller.js');
-const UsersService = require('../services/UsersService.js');
+const Controller = require("./Controller.js");
+const UsersService = require("../services/UsersService.js");
 
 const usersService = new UsersService();
 
@@ -10,4 +10,4 @@ class UsersController extends Controller {
 
 }
 
-module.exports = UsersController
+module.exports = UsersController;
