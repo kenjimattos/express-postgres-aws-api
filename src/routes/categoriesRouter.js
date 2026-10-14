@@ -9,5 +9,6 @@ router.get("/categories/:id", (req, res) => categoriesController.getById(req, re
 router.post("/categories", (req, res) => categoriesController.create(req, res));
 router.put("/categories/:id", (req, res) => categoriesController.updateById(req, res));
 router.delete("/categories/:id", (req, res) => categoriesController.deleteById(req, res));
+router.post("/categories/:id/restore", (req, res) => categoriesController.restoreById(req, res));
 
 module.exports = router;

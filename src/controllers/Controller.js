@@ -56,6 +56,16 @@ class Controller {
       //erro
     }
   }
+
+  async restoreById(req,res) {
+    const { id } = req.params;
+    try {
+      await this.service.restoreById(Number(id));
+      return res.status(200).json({ message: `${this.service.name } ${id} successfully restored.` });
+    } catch(error) {
+      //erro
+    }
+  }
 }
 
 module.exports = Controller;  

@@ -11,6 +11,12 @@ class UsersService extends Service {
 
     return enrollmentsList;
   }
+
+  async deleteById(id) {
+    const student = await super.getById(id);
+    await student.update({ active: false });
+    return student.destroy();
+  }
 }
 
 module.exports = UsersService;

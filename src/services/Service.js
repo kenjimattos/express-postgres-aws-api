@@ -30,6 +30,10 @@ class Service {
   async deleteById(id) {
     return this.model.destroy({ where: { id: id } });
   }
+
+  async restoreById(id) {
+    return this.model.restore({ where: { id: id } });
+  }
 }
 
 module.exports = Service;
