@@ -5,11 +5,25 @@ class UsersService extends Service {
     super("User");
   }
 
+  async getAllUsers() {
+    return await super.getByScope("allEntries");
+  }
+
   async getEnrollsByStudent(id) {
     const student = await super.getById(id);
     const enrollmentsList = await student.getEnrollments();
 
     return enrollmentsList;
+  }
+
+  async activateById(id) {
+    const student = await this.model.scope("allEntries").findByPk(id, { paranoid: false });
+    const isActive = student.active;
+
+    if (!student) return null;
+    if (!isActive) await student.update({ active: true });
+
+    return student;
   }
 
   async deleteById(id) {

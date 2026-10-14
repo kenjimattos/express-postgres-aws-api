@@ -14,6 +14,10 @@ class Service {
     return this.model.findByPk(id);
   }
 
+  async getByScope(scope) {
+    return this.model.scope(scope).findAll();
+  }
+
   async create(data) {
     return this.model.create(data);
   }
