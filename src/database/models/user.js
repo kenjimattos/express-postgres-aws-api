@@ -17,7 +17,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init({
     name: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: "E-mail format is not valid."
+        }
+      }
+    },
     cpf: DataTypes.STRING,
     active: DataTypes.BOOLEAN,
     role: DataTypes.ENUM("instructor", "student")
