@@ -51,6 +51,16 @@ module.exports = (sequelize, DataTypes) => {
     scopes: {
       allEntries: {
         where: {}
+      },
+      enrolls: {
+        include: [
+          {
+            model: sequelize.models.Enroll,
+            as: "enrollments",
+            include: [{ model: sequelize.models.Course }],
+            required: true,
+          },
+        ],
       }
     }
   });

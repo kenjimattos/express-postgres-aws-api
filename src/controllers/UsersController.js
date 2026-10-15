@@ -27,6 +27,15 @@ class UsersController extends Controller {
     }
   }
 
+  async getUsersEnrolls(req, res) {
+    try {
+      const usersEnrolled = await usersService.getByScope("enrolls");
+      return res.status(200).json(usersEnrolled);
+    } catch(error) {
+      console.error(error);
+    }
+  }
+
   async activateUser(req, res) {
     const { id } = req.params;
     try {

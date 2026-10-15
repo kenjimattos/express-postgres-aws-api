@@ -8,6 +8,7 @@ const router = Router();
 
 router.get("/users", (req, res) => usersController.getAll(req, res));
 router.get("/users/all", (req, res) => usersController.getAllUsers(req, res));
+router.get("/users/enrolls", (req, res) => usersController.getUsersEnrolls(req, res));
 router.get("/users/:id", (req, res) => usersController.getById(req, res));
 
 router.post("/users", (req, res) => usersController.create(req, res));
