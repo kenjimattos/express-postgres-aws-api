@@ -1,7 +1,7 @@
 "use strict";
-const {
-  Model
-} = require("sequelize");
+const { Model } = require("sequelize");
+const { validateCpf } = require("../../utils/validateCpf.js");
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
@@ -26,7 +26,16 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    cpf: DataTypes.STRING,
+    cpf: {
+      type: DataTypes.STRING,
+      validate: {
+        isCPF(value) {
+          if (!validateCpf(value)) {
+            throw new Error("CPF format is not valid.");
+          }
+        }
+      }
+    },
     active: DataTypes.BOOLEAN,
     role: DataTypes.ENUM("instructor", "student")
   }, {
