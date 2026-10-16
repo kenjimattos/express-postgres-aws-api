@@ -24,5 +24,7 @@ router.get("/users/:student_id/enrolls", (req, res) => usersController.getEnroll
 router.get("/users/:student_id/enrolls/active", (req, res) => usersController.getActiveEnrolls(req, res));
 router.post("/users/:student_id/enrolls", (req, res) => enrollsController.create(req, res));
 router.put("/users/:student_id/enrolls/:id", (req, res) => enrollsController.update(req, res));
+router.delete("/users/:student_id/enrolls/:id", (req, res) => enrollsController.delete(req, res));
+router.post("/users/:student_id/enrolls/:id/restore", (req, res) => enrollsController.restore(req, res));
 
 module.exports = router;
