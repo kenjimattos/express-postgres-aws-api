@@ -1,3 +1,5 @@
+const convertIdToNumber = require("../utils/convertIdToNumber");
+
 class Controller {
   constructor (service) {
     this.service = service;
@@ -35,12 +37,16 @@ class Controller {
     }
   }
 
-  async updateById(req,res) {
-    const { id } = req.params;
+  async update(req,res) {
+    const { ...params } = req.params;
     const newData = req.body;
 
+    const where = convertIdToNumber(params);
+
+    const id = where.id;
+
     try {
-      const isUpdated = await this.service.updateById(Number(id), newData);
+      const isUpdated = await this.service.update(where, newData);
       if (isUpdated) {
         return res.status(200).json({ message: `${this.service.name } ${id} updated successfully.` });
       }

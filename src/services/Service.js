@@ -22,8 +22,8 @@ class Service {
     return this.model.create(data);
   }
 
-  async updateById(id, newData) {
-    const updatedRows = await this.model.update(newData, { where: { id: id },});
+  async update(where, newData) {
+    const updatedRows = await this.model.update(newData, { where } );
 
     if (updatedRows[0] > 0) {
       return true;

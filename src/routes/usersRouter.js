@@ -15,7 +15,7 @@ router.get("/users/:id", (req, res) => usersController.getById(req, res));
 router.post("/users", (req, res) => usersController.create(req, res));
 router.post("/users/:id/activate", (req, res) => usersController.activateUser(req, res));
 
-router.put("/users/:id", (req, res) => usersController.updateById(req, res));
+router.put("/users/:id", (req, res) => usersController.update(req, res));
 
 router.delete("/users/:id", (req, res) => usersController.deleteById(req, res));
 router.post("/users/:id/restore", (req, res) => usersController.restoreById(req, res));
