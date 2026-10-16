@@ -56,20 +56,28 @@ class Controller {
     }
   }
 
-  async deleteById(req,res) {
-    const { id } = req.params;
+  async delete(req,res) {
+    const { ...params } = req.params;
+
+    const where = convertIdToNumber(params);
+    const id = where.id;
+
     try {
-      await this.service.deleteById(Number(id));
+      await this.service.delete(where);
       return res.status(200).json({ message: `${this.service.name } ${id} successfully deleted.` });
     } catch(error) {
       //erro
     }
   }
 
-  async restoreById(req,res) {
-    const { id } = req.params;
+  async restore(req,res) {
+    const { ...params } = req.params;
+
+    const where = convertIdToNumber(params);
+    const id = where.id;
+
     try {
-      await this.service.restoreById(Number(id));
+      await this.service.restore(where);
       return res.status(200).json({ message: `${this.service.name } ${id} successfully restored.` });
     } catch(error) {
       //erro

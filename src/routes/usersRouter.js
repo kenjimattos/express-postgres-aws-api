@@ -17,8 +17,8 @@ router.post("/users/:id/activate", (req, res) => usersController.activateUser(re
 
 router.put("/users/:id", (req, res) => usersController.update(req, res));
 
-router.delete("/users/:id", (req, res) => usersController.deleteById(req, res));
-router.post("/users/:id/restore", (req, res) => usersController.restoreById(req, res));
+router.delete("/users/:id", (req, res) => usersController.delete(req, res));
+router.post("/users/:id/restore", (req, res) => usersController.restore(req, res));
 
 router.get("/users/:student_id/enrolls", (req, res) => usersController.getEnrolls(req, res));
 router.get("/users/:student_id/enrolls/active", (req, res) => usersController.getActiveEnrolls(req, res));

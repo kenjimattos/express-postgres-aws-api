@@ -31,12 +31,12 @@ class Service {
     return false;
   }
 
-  async deleteById(id) {
-    return this.model.destroy({ where: { id: id } });
+  async delete(where) {
+    return this.model.destroy({ where });
   }
 
-  async restoreById(id) {
-    return this.model.restore({ where: { id: id } });
+  async restore(where) {
+    return this.model.restore({ where });
   }
 }
 
