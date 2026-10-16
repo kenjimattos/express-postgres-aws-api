@@ -10,8 +10,12 @@ module.exports = (sequelize, DataTypes) => {
       });
       User.hasMany(models.Enroll, {
         foreignKey: "student_id",
-        // scope: { status: "active" },
-        as: "enrollments"
+        as: "enrolls"
+      });
+      User.hasMany(models.Enroll, {
+        foreignKey: "student_id",
+        scope: { status: "active" },
+        as: "activeEnrolls"
       });
     }
   }
@@ -56,7 +60,18 @@ module.exports = (sequelize, DataTypes) => {
         include: [
           {
             model: sequelize.models.Enroll,
-            as: "enrollments",
+            as: "enrolls",
+            include: [{ model: sequelize.models.Course }],
+            required: true,
+          },
+        ],
+      },
+      activeEnrolls: {
+        include: [
+          {
+            model: sequelize.models.Enroll,
+            as: "activeEnrolls",
+            scope: { status: "active" },
             include: [{ model: sequelize.models.Course }],
             required: true,
           },

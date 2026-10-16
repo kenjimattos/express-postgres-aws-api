@@ -11,8 +11,18 @@ class UsersController extends Controller {
   async getEnrolls(req, res) {
     const { student_id } = req.params;
     try {
-      const enrollments = await usersService.getEnrollsByStudent(Number(student_id));
-      return res.status(200).json(enrollments);
+      const enrolls = await usersService.getEnrolls(Number(student_id));
+      return res.status(200).json(enrolls);
+    } catch(error) {
+      //erro
+    }
+  }
+
+  async getActiveEnrolls(req, res) {
+    const { student_id } = req.params;
+    try {
+      const enrolls = await usersService.getActiveEnrolls(Number(student_id));
+      return res.status(200).json(enrolls);
     } catch(error) {
       //erro
     }
@@ -30,6 +40,15 @@ class UsersController extends Controller {
   async getUsersEnrolls(req, res) {
     try {
       const usersEnrolled = await usersService.getByScope("enrolls");
+      return res.status(200).json(usersEnrolled);
+    } catch(error) {
+      console.error(error);
+    }
+  }
+
+  async getUsersActiveEnrolls(req, res) {
+    try {
+      const usersEnrolled = await usersService.getByScope("activeEnrolls");
       return res.status(200).json(usersEnrolled);
     } catch(error) {
       console.error(error);

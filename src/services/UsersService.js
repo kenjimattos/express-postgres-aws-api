@@ -9,11 +9,18 @@ class UsersService extends Service {
     return await super.getByScope("allEntries");
   }
 
-  async getEnrollsByStudent(id) {
+  async getEnrolls(id) {
     const student = await super.getById(id);
-    const enrollmentsList = await student.getEnrollments();
+    const enrollsList = await student.getEnrolls();
 
-    return enrollmentsList;
+    return enrollsList;
+  }
+
+  async getActiveEnrolls(id) {
+    const student = await super.getById(id);
+    const enrollsList = await student.getActiveEnrolls();
+
+    return enrollsList;
   }
 
   async activateById(id) {
